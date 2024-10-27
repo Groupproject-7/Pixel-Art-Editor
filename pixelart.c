@@ -60,30 +60,7 @@ void drawPixel(char grid[ROWS][COLS], int row, int col, char color) {
 }
 
 // Erase a pixel by setting it to blank
-void erasePixel(char grid[ROWS][COLS], int row, int col) {
-    if (row >= 0 && row < ROWS && col >= 0 && col < COLS) {
-        grid[row][col] = ' ';
-    } else {
-        printf("Invalid coordinates!\n");
-    }
-}
 
-// Flood fill algorithm to fill an area with a new color
-void fillColor(char grid[ROWS][COLS], int row, int col, char oldColor, char newColor) {
-    if (row < 0 || row >= ROWS || col < 0 || col >= COLS || grid[row][col] != oldColor || oldColor == newColor) {
-        return;
-    }
-
-    grid[row][col] = newColor;
-
-    // Recursively fill surrounding pixels
-    fillColor(grid, row + 1, col, oldColor, newColor);
-    fillColor(grid, row - 1, col, oldColor, newColor);
-    fillColor(grid, row, col + 1, oldColor, newColor);
-    fillColor(grid, row, col - 1, oldColor, newColor);
-}
-
-// Function to handle user input for editing the grid
 void handleUserInput(char grid[ROWS][COLS]) {
     int choice;
     printf("Choose an action: \n");
@@ -119,6 +96,6 @@ void handleUserInput(char grid[ROWS][COLS]) {
             break;
         default:
             printf("Invalid choice!\n");
-            break;
-    }
+          Â Â break;
+Â Â Â Â }
 }
