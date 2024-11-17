@@ -50,7 +50,13 @@ void drawPixel(char grid[ROWS][COLS], int row, int col, char color) {
         printf("Invalid coordinates!\n");
     }
 }
-
+void erasePixel(char grid[ROWS][COLS], int row, int col) {
+    if (row >= 0 && row < ROWS && col >= 0 && col < COLS) {
+        grid[row][col] = ' ';
+    } else {
+        printf("Invalid coordinates!\n");
+    }
+}
 
 void handleUserInput(char grid[ROWS][COLS]) {
     int choice;
