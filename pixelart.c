@@ -13,14 +13,14 @@ void handleUserInput(char grid[ROWS][COLS]);
 
 int main() {
     char grid[ROWS][COLS];
-
+    
     initializeGrid(grid);
-
+    
     while (1) {
         displayGrid(grid);
         handleUserInput(grid);
     }
-
+    
     return 0;
 }
 
@@ -50,6 +50,7 @@ void drawPixel(char grid[ROWS][COLS], int row, int col, char color) {
         printf("Invalid coordinates!\n");
     }
 }
+
 void erasePixel(char grid[ROWS][COLS], int row, int col) {
     if (row >= 0 && row < ROWS && col >= 0 && col < COLS) {
         grid[row][col] = ' ';
@@ -65,7 +66,6 @@ void fillColor(char grid[ROWS][COLS], int row, int col, char oldColor, char newC
     
     grid[row][col] = newColor;
     
-    // Recursively fill surrounding pixels
     fillColor(grid, row + 1, col, oldColor, newColor);
     fillColor(grid, row - 1, col, oldColor, newColor);
     fillColor(grid, row, col + 1, oldColor, newColor);
@@ -81,10 +81,10 @@ void handleUserInput(char grid[ROWS][COLS]) {
     printf("4. Exit\n");
     printf("Enter your choice: ");
     scanf("%d", &choice);
-
+    
     int row, col;
     char color;
-
+    
     switch (choice) {
         case 1:
             printf("Enter row, column, and color (e.g., 2 3 @): ");
@@ -107,6 +107,6 @@ void handleUserInput(char grid[ROWS][COLS]) {
             break;
         default:
             printf("Invalid choice!\n");
-            break;
-    }
+            break;
+    }
 }
