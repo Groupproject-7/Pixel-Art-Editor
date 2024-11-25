@@ -58,6 +58,20 @@ void erasePixel(char grid[ROWS][COLS], int row, int col) {
     }
 }
 
+void fillColor(char grid[ROWS][COLS], int row, int col, char oldColor, char newColor) {
+    if (row < 0 || row >= ROWS || col < 0 || col >= COLS || grid[row][col] != oldColor || oldColor == newColor) {
+        return;
+    }
+    
+    grid[row][col] = newColor;
+    
+    // Recursively fill surrounding pixels
+    fillColor(grid, row + 1, col, oldColor, newColor);
+    fillColor(grid, row - 1, col, oldColor, newColor);
+    fillColor(grid, row, col + 1, oldColor, newColor);
+    fillColor(grid, row, col - 1, oldColor, newColor);
+}
+
 void handleUserInput(char grid[ROWS][COLS]) {
     int choice;
     printf("Choose an action: \n");
