@@ -80,10 +80,35 @@ void handleUserInput(char grid[ROWS][COLS]) {
     printf("3. Fill Color\n");
     printf("4. Exit\n");
     printf("Enter your choice: ");
-    scanf("%d", &choice);
     
     int row, col;
     char color;
+
+    while (1)
+    {
+        // check the choice the integer or other else
+        if (scanf("%d", &choice) != 1)
+        {
+            // for clearing invalid input
+            while (getchar() != '\n');
+            printf("\nInvalid input!");
+
+            printf("\n");
+        }
+        else if (choice == 1 || choice == 2||choice==3||choice==4)
+        {
+            break; 
+        }
+        else
+        {
+            printf("\n\nInvalid choice!");
+
+        }
+
+        printf("\nEnter your choice: ");
+    }
+
+    printf("\n");
     
     switch (choice) {
         case 1:
